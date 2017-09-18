@@ -1,3 +1,9 @@
+# mongodb 
+data/*
+
+# Journal
+server/journal/*
+
 # Logs
 logs
 *.log
@@ -44,6 +50,7 @@ typings/
 
 # Optional eslint cache
 .eslintcache
+server/.eslintrc.json
 
 # Optional REPL history
 .node_repl_history

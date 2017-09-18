@@ -1,0 +1,13 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title}
+
+  ul
+  for item in events
+    li #{item.name}
+      ul
+        li time: #{item.time}
+        li parties: #{item.num_of_people}
+        li creator: #{item.creator}, #{item['created_at']}

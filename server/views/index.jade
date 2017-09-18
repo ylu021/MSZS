@@ -1,0 +1,9 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title}
+
+  for item in users
+    li= item['name']
+      p #{item['email']}
