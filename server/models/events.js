@@ -1,9 +1,13 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const ObjectId = Schema.Types.ObjectId;
 
 const eventSchema = new Schema({
-  name: String,
+  name: {
+    type: String,
+    unique: true,
+    index: true,
+    required: true
+  },
   description: String,
   picture: [
     {type: String}
@@ -20,13 +24,13 @@ const eventSchema = new Schema({
   updated_at: Date,
   location: String,
   creator: {
-    type: ObjectId,
+    type: Schema.Types.ObjectId,
     ref: 'User'
   }
 });
 
 eventSchema.pre('save', function (next) {
-  console.log('am i here in presave', this);
+  // console.log('am i here in presave', this);
   const currentDate = new Date();
   this.updated_at = currentDate;
   if(!this.created_at) {

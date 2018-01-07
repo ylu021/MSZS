@@ -13,7 +13,9 @@ const ObjectId = mongoose.Schema.Types.ObjectId;
 // using promise
 mongoose.Promise = require('bluebird');
 // connect database
-mongoose.connect('mongodb://localhost/meishizhaoshi');
+mongoose.connect('mongodb://localhost/meishizhaoshi', {
+  useMongoClient: true
+});
 const db = mongoose.connection;
 
 const User = require('./models/users');
@@ -71,6 +73,8 @@ dummyEvents.map((event) => {
   (async() => {
     const user = await User.findOne({name: event.creator});
     event.creator = user._id;
+    console.log('user id', user._id);
+    // const exist = await Event.find({ name: event.name, creator: user._id });
     let newEvent = Event(event);
     const res = await newEvent.save();
     // console.log(res);
