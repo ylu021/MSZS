@@ -17,6 +17,10 @@ mongoose.connect('mongodb://localhost/meishizhaoshi', {
   useMongoClient: true
 });
 const db = mongoose.connection;
+db.on('error', ()=> {console.log( '---FAILED to connect to mongoose');});
+db.once('open', () => {
+ console.log( '+++Connected to mongoose');
+});
 
 const User = require('./models/users');
 const Event = require('./models/events');

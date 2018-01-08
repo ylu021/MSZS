@@ -20,6 +20,8 @@ module.exports = (app) => {
 			res.render('index', {title: 'Express', users});
 		})().catch(e => console.error(e));
 	});
-
+	app.get('/users', userController.list);
+	app.get('/users/:id', userController.list);
 	app.get('/events', eventController.list);
+	app.get('/events/:id', eventController.list);
 };
