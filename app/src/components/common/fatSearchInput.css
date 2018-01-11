@@ -1,0 +1,19 @@
+.fatSearchInput {
+  margin-right: 5px;
+  height: 60px;
+}
+
+.fatSearchInput-input {
+  height: inherit;
+  font-size: inherit;
+  padding: 0 15px;
+}
+
+.fatSearchInput-btn {
+  height: inherit;
+  font-size: inherit;
+  padding: 0 15px;
+  background-color: white;
+  border: 1px solid black;
+  margin-right: 0px;
+}
