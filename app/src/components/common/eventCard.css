@@ -1,0 +1,27 @@
+.eventCards {
+  display: flex;
+}
+.eventCard {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    flex: 1 1 auto;
+}
+
+.eventCard-fig {
+    background: aliceblue;
+    flex: 1 1 auto;
+}
+
+.eventCard-desc {
+    flex: 1 1 auto;
+    text-align: left;
+}
+
+.eventCard-desc-item {
+  width: 100%;
+}
+
+.eventCard-desc-bold {
+  font-weight: bold;
+}

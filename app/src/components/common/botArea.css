@@ -1,0 +1,10 @@
+.botArea {
+  height: auto;
+  padding: 15px 10%;
+}
+.botArea-title {
+  display: flex;
+  justify-content: space-between;
+  height: 20%;
+  border: 1px solid black;
+}
