@@ -1,0 +1,38 @@
+.backdrop {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0,0,0,0.3);
+  padding: 50%;
+}
+
+.modal {
+  position: absolute;
+  padding: 0;
+  margin: 0 auto;
+  top: 5%;
+  right: 0;
+  left: 0;
+  bottom: 20%;
+  background-color: white;
+  border-radius: 5px;
+  width: 100%;
+  height: 40%;
+  max-width: 750px;
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.modal-content {
+  background: aliceblue;
+  height: 80%;
+}
+
+.modal-footer {
+  height: 20%;
+  background: tomato;
+}
