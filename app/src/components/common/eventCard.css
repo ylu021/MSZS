@@ -1,11 +1,13 @@
 .eventCards {
   display: flex;
+  flex-wrap: wrap;
 }
 .eventCard {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
     flex: 1 1 auto;
+    width: 30%;
 }
 
 .eventCard-fig {

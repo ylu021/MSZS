@@ -54,10 +54,10 @@ const Menu = ({user}) => (
 );
 
 const Banner = ({ user }) => (
-	<div className='banner'>
+	<header className='banner'>
     <LogoFraction/>
     <Menu user={user} />
-	</div>
+	</header>
 );
 
 export default Banner;

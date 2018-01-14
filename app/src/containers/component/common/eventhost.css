@@ -1,0 +1,45 @@
+.EventHost {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 70%;
+  align-items: center;
+  border: 1px solid black;
+}
+
+.EventHost-spacing {
+  margin-bottom: 15px;
+}
+
+.EventHost-profile {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: inherit;
+}
+
+.EventHost-profile-fig {
+  width: 70px;
+  height: 70px;
+  background: aliceblue;
+  overflow: hidden;
+  border-radius: 5px;
+}
+
+.EventHost-profile-fig img {
+  display: block;
+  margin: 0 auto;
+  height: auto;
+  width: 200%;
+  margin-left: -20%;
+}
+
+.EventHost-detail {
+  display: flex;
+  flex-direction: column;
+  margin-left: 15px;
+}
+
+.EventHost-detail > * {
+  line-height: 2;
+}
