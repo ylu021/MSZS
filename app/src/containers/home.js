@@ -14,7 +14,7 @@ import { menuLink, testVars } from '../components/const';
 class Home extends Component {
   state = { modalOpen: false, modalType: '' };
   componentWillMount() {
-    console.log(this.props)
+    // console.log(this.props)
     // this.props.history.push('/')
   }
   reRenderPath = (props) => {
@@ -53,7 +53,7 @@ class Home extends Component {
           show={this.state.modalOpen}
           onClose={this.onClose}
         >
-          {this.state.modalType == '/signup' ?
+          {this.state.modalType === '/signup' ?
             <SignupForm />
             : <LoginForm />
           }

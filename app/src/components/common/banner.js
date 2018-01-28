@@ -1,7 +1,6 @@
 import React from 'react';
 import logo from 'logo.svg';
 import './banner.css';
-import Routes from '../../routes';
 import {Link} from 'react-router-dom';
 import {menuLink} from '../const';
 

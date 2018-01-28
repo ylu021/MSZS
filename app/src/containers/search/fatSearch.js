@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { FatSearchInput } from '../../components/common/searchInput';
+import { FatSearchInput, FatSearchButton } from '../../components/common/searchInput';
 import './fatSearch.css';
 
 export default class FatSearch extends Component {
@@ -10,8 +10,7 @@ export default class FatSearch extends Component {
   };
 
   handleChange = (e) => {
-    console.log('im here value', e.target.value)
-    console.log('im here name', e.target.name)
+		console.log(e.target)
     this.setState({[e.target.name]: e.target.value});
   };
 
@@ -34,19 +33,19 @@ export default class FatSearch extends Component {
           <FatSearchInput
             name='what'
             text={what}
-            handleChange={this.handleChange}
+						handleChange={this.handleChange}
           />
           <FatSearchInput
             name='when'
             text={when}
-            handleChange={this.handleChange}
+						handleChange={this.handleChange}
           />
           <FatSearchInput
             name='where'
             text={where}
-            handleChange={this.handleChange}
+						handleChange={this.handleChange}
           />
-          <FatSearchInput/>
+          <FatSearchButton/>
         </form>
 			</div>
 		);

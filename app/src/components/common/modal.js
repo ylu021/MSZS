@@ -6,17 +6,24 @@ const Modal = (props) => (
     { props.show ?
       <div className='backdrop'>
         <div className='modal'>
+          <div className='modal-header'>
+            <button
+              className='btn modal-close-btn'
+              onClick={props.onClose}
+            >Close
+            </button>
+          </div>
           <div className='modal-content'>
             {props.children}
           </div>
-          <div className='modal-footer'>
+          {/* <div className='modal-footer'>
             <button
               className='modal-close-btn'
               onClick={props.onClose}
             >
               Close
             </button>
-          </div>
+          </div> */}
         </div>
       </div>
       : null

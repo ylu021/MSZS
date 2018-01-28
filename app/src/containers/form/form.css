@@ -1,0 +1,32 @@
+.Form-title {
+    text-align: center;
+    font-size: 2rem;
+}
+.Form {
+    width: 60%;
+    height: auto;
+    display: flex;
+    flex-flow: column nowrap;
+    margin: 0 auto;
+}
+.Form-input,.Form-btn {
+    font-size: 1.2rem;
+    font-weight: lighter;
+}
+.Form-inputgroup {
+    padding: 2.5rem 0;
+    width: inherit;
+    margin: 0 auto;
+    text-align: center;
+}
+.Form-input {
+    background: none;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+.Form-btn {
+    width: inherit;
+    margin: 0 auto;
+}

@@ -7,7 +7,7 @@ export default ({host}) => {
     <div className='EventHost EventHost-spacing'>
       <div className='EventHost-profile'>
         <div className='EventHost-profile-fig'>
-          <img src={profile_fig} />
+          <img src={profile_fig} alt='' />
         </div>
         <div className='EventHost-detail'>
           <span>{username}</span>

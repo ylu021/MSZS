@@ -20,7 +20,6 @@ class Event extends Component {
   state = { event: this.props.event };
 
   render() {
-    console.log(this.props.event)
     const {host, name, location, time, spots, fig} = this.state.event;
     return (
       <div>
@@ -38,8 +37,9 @@ class Event extends Component {
                   (g, idx) => <div className='Event-fig grid-spacing'><img
                                 key={idx}
                                 src={g}
+                                alt=''
                               /></div>
-                ) : <div><img className='Event-fig' src={fig} /></div>
+                ) : <div><img className='Event-fig' src={fig} alt='' /></div>
               }
             </div>
           </div>
