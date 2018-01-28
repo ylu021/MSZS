@@ -17,7 +17,9 @@ const EventCards = ({cards}) => (
 export const EventCard = ({card}) => (
   <div className='eventCard grid-spacing'>
     <div className='eventCard-fig'>
-      <img src={card.fig}/>
+      <img src={
+        typeof(card.fig) === 'object' ? card.fig[0] : card.fig
+      }/>
     </div>
     <div className='eventCard-desc'>
       <div className='eventCard-desc-item'>

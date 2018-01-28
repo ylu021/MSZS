@@ -1,6 +1,9 @@
 import React from 'react';
 import logo from 'logo.svg';
 import './banner.css';
+import Routes from '../../routes';
+import {Link} from 'react-router-dom';
+import {menuLink} from '../const';
 
 const LogoFraction = () => (
   <div className='banner-site'>
@@ -13,7 +16,7 @@ const LogoFraction = () => (
   </div>
 );
 
-let logined = true;
+let logined = false;
 const menu1 = ['home', 'explore', 'about'];
 const menu2 = ['login', 'join us'];
 if(logined) {
@@ -25,6 +28,9 @@ const UserMenu = ({user}) => (
     User *|_A|*
   </div>
 )
+
+const capitalizeText = (text) => text[0].toUpperCase() + text.substring(1)
+
 const Menu = ({user}) => (
   <div className='banner-menu'>
     <ul className='banner-menu-site'>
@@ -33,7 +39,9 @@ const Menu = ({user}) => (
         if (menu === 'create') {
           classes.push('banner-menu-signup');
         }
-        return <li key={menu}>{menu[0].toUpperCase() + menu.substring(1)}</li>
+        return <li key={menu}>
+          <Link to={menuLink[menu]['path']}>{capitalizeText(menu)}</Link>
+        </li>
       })}
     </ul>
     <div className='banner-menu-separator'></div>
@@ -46,7 +54,9 @@ const Menu = ({user}) => (
           if (menu === 'join us') {
             classes.push('banner-menu-signup');
           }
-          return <li className={classes.length? classes.join(' ') : ''} key={menu}>{menu[0].toUpperCase() + menu.substring(1)}</li>
+          return (<li className={classes.length? classes.join(' ') : ''} key={menu}>
+                      <Link to={menuLink[menu]['path']}>{capitalizeText(menu)}</Link>
+                 </li>)
         }
       })}
     </ul>
