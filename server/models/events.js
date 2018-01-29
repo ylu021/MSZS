@@ -9,10 +9,14 @@ const eventSchema = new Schema({
     required: true
   },
   description: String,
-  picture: [
+  fig: [
     {type: String}
   ],
   num_of_people: {
+    type: Number,
+    required: true
+  },
+  total_num_of_people: {
     type: Number,
     required: true
   },
@@ -23,7 +27,7 @@ const eventSchema = new Schema({
   created_at: Date,
   updated_at: Date,
   location: String,
-  creator: {
+  host: {
     type: Schema.Types.ObjectId,
     ref: 'User'
   }

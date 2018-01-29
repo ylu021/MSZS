@@ -41,27 +41,33 @@ const dummyUsers = [
 dummyEvents = [
   {
     name: "dummy event 1",
+    fig: ['https://cdn-images-1.medium.com/max/1600/1*GEniDHmmO0nkVuKQ8fhLYw.png', 'https://cdn-images-1.medium.com/max/1600/1*GEniDHmmO0nkVuKQ8fhLYw.png', 'https://cdn-images-1.medium.com/max/1600/1*GEniDHmmO0nkVuKQ8fhLYw.png'],
     description: "",
-    location: "",
+    location: "NY",
     num_of_people: 4,
+    total_num_of_people: 4,
     time: new Date(),
-    creator: 'Chris'
+    host: 'Chris'
   },
   {
     name: "dummy event 2",
+    fig: ['https://cdn-images-1.medium.com/max/1600/1*GEniDHmmO0nkVuKQ8fhLYw.png', 'https://cdn-images-1.medium.com/max/1600/1*GEniDHmmO0nkVuKQ8fhLYw.png', 'https://cdn-images-1.medium.com/max/1600/1*GEniDHmmO0nkVuKQ8fhLYw.png'],
     description: "",
-    location: "",
+    location: "CA",
     num_of_people: 4,
+    total_num_of_people: 10,
     time: new Date(),
-    creator: 'Chris'
+    host: 'Chris'
   },
   {
     name: "dummy event 3",
+    fig: ['https://cdn-images-1.medium.com/max/1600/1*GEniDHmmO0nkVuKQ8fhLYw.png', 'https://cdn-images-1.medium.com/max/1600/1*GEniDHmmO0nkVuKQ8fhLYw.png', 'https://cdn-images-1.medium.com/max/1600/1*GEniDHmmO0nkVuKQ8fhLYw.png'],
     description: "",
-    location: "",
+    location: "NY",
     num_of_people: 4,
+    total_num_of_people: 6,
     time: new Date(),
-    creator: 'Bob'
+    host: 'Bob'
   }
 ];
 
@@ -75,8 +81,8 @@ dummyUsers.map((user) => {
 
 dummyEvents.map((event) => {
   (async() => {
-    const user = await User.findOne({name: event.creator});
-    event.creator = user._id;
+    const user = await User.findOne({name: event.host});
+    event.host = user._id;
     console.log('user id', user._id);
     // const exist = await Event.find({ name: event.name, creator: user._id });
     let newEvent = Event(event);

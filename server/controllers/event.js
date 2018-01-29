@@ -12,12 +12,13 @@ exports.list = (req, res) => {
     }
     // console.log(events);
     for (let idx in events) {
-      let _id = mongoose.Types.ObjectId(events[idx].creator);
+      let _id = mongoose.Types.ObjectId(events[idx].host);
       const user = await User.findOne({_id: _id});
       // console.log(events[idx], user.name);
-      events[idx]['creator'] = user.name;
+      events[idx]['host'] = user.name;
       events[idx]['created_at'] = events[idx]['created_at'].toISOString().slice(0, 10);
     }
-    res.render('events', {title: 'Express', events});
+    res.json({events: events});
+    // res.render('events', {title: 'Express', events});
   })().catch(e => console.error(e));
 };

@@ -14,32 +14,35 @@ const EventCards = ({cards}) => (
   </div>
 )
 
-export const EventCard = ({card}) => (
-  <div className='eventCard grid-spacing'>
-    <div className='eventCard-fig'>
-      <img
-        src={
-        typeof(card.fig) === 'object' ? card.fig[0] : card.fig
-        }
-        alt=''
-      />
+export const EventCard = ({card}) => {
+  const spots = card.total_num_of_people - card.num_of_people;
+  return (
+    <div className='eventCard grid-spacing'>
+      <div className='eventCard-fig'>
+        <img
+          src={
+          typeof(card.fig) === 'object' ? card.fig[0] : card.fig
+          }
+          alt=''
+        />
+      </div>
+      <div className='eventCard-desc'>
+        <div className='eventCard-desc-item'>
+          {spots} free spots
+        </div>
+        <div className='eventCard-desc-item'>
+          <span className='eventCard-desc-bold'>Event name:</span> {card.name}
+        </div>
+        <div className='eventCard-desc-item'>
+          <span className='eventCard-desc-bold'>Location:</span> {card.location}
+        </div>
+        <div className='eventCard-desc-item'>
+          <span className='eventCard-desc-bold'>Time:</span> {card.time.toString()}
+        </div>
+      </div>
     </div>
-    <div className='eventCard-desc'>
-      <div className='eventCard-desc-item'>
-        {card.spots} free spots
-      </div>
-      <div className='eventCard-desc-item'>
-        <span className='eventCard-desc-bold'>Event name:</span> {card.name}
-      </div>
-      <div className='eventCard-desc-item'>
-        <span className='eventCard-desc-bold'>Location:</span> {card.location}
-      </div>
-      <div className='eventCard-desc-item'>
-        <span className='eventCard-desc-bold'>Time:</span> {card.time.toString()}
-      </div>
-    </div>
-  </div>
-)
+  );
+}
 
 export const CenterText = ({text}) => (
   <div className='centerText'>

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import { connect } from 'react-redux';
 import FatSearch from './search/fatSearch';
 
 import SignupForm from '../containers/form/signup';
@@ -10,12 +10,16 @@ import BottomArea, { SectionTitle } from '../components/common/botArea';
 import EventCards from '../components/common/eventCard';
 import { centerText, sectionTitle } from '../components/const';
 import { menuLink, testVars } from '../components/const';
+import * as action from '../actions/eventAction';
 
 class Home extends Component {
-  state = { modalOpen: false, modalType: '' };
-  componentWillMount() {
-    // console.log(this.props)
-    // this.props.history.push('/')
+  state = {
+    modalOpen: false,
+    modalType: '',
+    events: []
+  };
+  componentDidMount() {
+    this.props.dispatch(action.fetchEvents());
   }
   reRenderPath = (props) => {
     const { match } = props;
@@ -35,7 +39,7 @@ class Home extends Component {
     this.setState({ modalOpen: false, modalType: ''})
   }
   render() {
-    const eventcards = [testVars['card'],testVars['card'],testVars['card'],testVars['card'], testVars['card'], testVars['card']]
+    const eventcards = this.props.events;
     return (
       <div>
         <TopArea>
@@ -63,4 +67,9 @@ class Home extends Component {
   }
 }
 
-export default Home;
+export default connect((store) => {
+  return {
+    user: store.user,
+    events: store.events.events
+  }
+})(Home);
