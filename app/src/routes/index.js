@@ -9,7 +9,6 @@ import Home from '../containers/home';
 import Event from '../containers/event';
 import Banner from '../components/common/banner';
 import { Explore, About } from '../components/site';
-import { testVars } from '../components/const';
 
 export default () => (
   <Router>
@@ -22,7 +21,7 @@ export default () => (
         <Route path='/login' exact render={props => <Home {...props} />} />
         <Route path='/explore' exact component={Explore} />
         <Route path='/about' exact component={About} />
-        <Route path='/event-test' render={() => <Event event={testVars['card']} />} />
+        <Route path='/events/:id' render={(props) => <Event {...props} />} />
       </Switch>
     </div>
   </Router>

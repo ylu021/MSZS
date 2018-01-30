@@ -9,7 +9,7 @@ import TopArea, { CenterText } from '../components/common/topArea';
 import BottomArea, { SectionTitle } from '../components/common/botArea';
 import EventCards from '../components/common/eventCard';
 import { centerText, sectionTitle } from '../components/const';
-import { menuLink, testVars } from '../components/const';
+import { menuLink } from '../components/const';
 import * as action from '../actions/eventAction';
 
 class Home extends Component {

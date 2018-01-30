@@ -3,7 +3,10 @@ const headers = {
   'Content-Type': 'application/json'
 }
 
-async function getRequest(url) {
+async function getRequest(url, params) {
+  if(params) {
+    url += `/${params}`;
+  }
   const data = await (await fetch(url, {headers: headers})
     .then(res => res.json())
     .catch(e => console.log('error', e.message))
@@ -12,3 +15,4 @@ async function getRequest(url) {
 }
 
 export const fetchEvents = () => getRequest('/events');
+export const fetchEvent = (eventId) => getRequest('/events', eventId);

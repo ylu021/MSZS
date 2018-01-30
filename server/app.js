@@ -29,12 +29,14 @@ const dummyUsers = [
   {
     name: 'Chris',
     email: 'chris@gmail.com',
-    password: '12345'
+    password: '12345',
+    profile_fig: 'https://cdn-images-1.medium.com/max/1600/1*GEniDHmmO0nkVuKQ8fhLYw.png'
   },
   {
     name: 'Bob',
     email: 'bob@gmail.com',
-    password: '12345'
+    password: '12345',
+    profile_fig: 'https://cdn-images-1.medium.com/max/1600/1*GEniDHmmO0nkVuKQ8fhLYw.png'
   }
 ];
 
@@ -83,7 +85,6 @@ dummyEvents.map((event) => {
   (async() => {
     const user = await User.findOne({name: event.host});
     event.host = user._id;
-    console.log('user id', user._id);
     // const exist = await Event.find({ name: event.name, creator: user._id });
     let newEvent = Event(event);
     const res = await newEvent.save();

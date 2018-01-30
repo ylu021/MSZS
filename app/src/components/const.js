@@ -21,6 +21,9 @@ export const menuLink = {
   },
   'join us': {
     'path': '/signup'
+  },
+  'events': {
+    'path': '/events'
   }
 };
 

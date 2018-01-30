@@ -9,6 +9,13 @@
     flex: 1 1 auto;
     width: 30%;
 }
+.eventCard-link {
+  text-decoration: none;
+  color: black;
+}
+.eventCard-link:hover {
+  opacity: 0.85;
+}
 
 .eventCard-fig {
     background: aliceblue;

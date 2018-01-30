@@ -8,14 +8,17 @@ exports.list = (req, res) => {
     if(id) {
       events = await Event.find({_id: mongoose.Types.ObjectId(id)}).lean();
     }else {
-      events = await Event.find({}, { _id: 0}).lean();
+      events = await Event.find({}).lean();
     }
-    // console.log(events);
     for (let idx in events) {
-      let _id = mongoose.Types.ObjectId(events[idx].host);
-      const user = await User.findOne({_id: _id});
-      // console.log(events[idx], user.name);
-      events[idx]['host'] = user.name;
+      const id = mongoose.Types.ObjectId(events[idx].host);
+      console.log(id);
+      const user = await User.findOne({_id: id});
+      console.log(user);
+      events[idx]['host'] = {
+        name: user.name,
+        profile_fig: user.profile_fig
+      };
       events[idx]['created_at'] = events[idx]['created_at'].toISOString().slice(0, 10);
     }
     res.json({events: events});

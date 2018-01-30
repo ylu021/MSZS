@@ -2,7 +2,7 @@ import React from 'react';
 import './eventhost.css';
 
 export default ({host}) => {
-  const { username, location, profile_fig } = host
+  const { name, profile_fig } = host;
   return (
     <div className='EventHost EventHost-spacing'>
       <div className='EventHost-profile'>
@@ -10,8 +10,7 @@ export default ({host}) => {
           <img src={profile_fig} alt='' />
         </div>
         <div className='EventHost-detail'>
-          <span>{username}</span>
-          <span>{location}</span>
+          <span>{name}</span>
         </div>
       </div>
       <div>Add</div>

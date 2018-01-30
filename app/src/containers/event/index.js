@@ -1,45 +1,42 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import './event.css';
 import EventHost from '../../components/common/eventhost';
+import * as action from '../../actions/eventAction';
 
 class Event extends Component {
   static propTypes = {
-    event: PropTypes.shape({
-      host: PropTypes.object,
-      name: PropTypes.string,
-      location: PropTypes.string,
-      time: PropTypes.object,
-      spots: PropTypes.number,
-      fig: PropTypes.oneOfType([
-        PropTypes.string,
-        PropTypes.array
-      ])
-    })
+    eventId: PropTypes.string
   };
-  state = { event: this.props.event };
-
+  state = {
+    eventId: this.props.match.params.id,
+    event: {}
+  };
+  componentDidMount() {
+    this.props.dispatch(action.fetchEvent(this.state.eventId));
+  }
+  getSpots = (event => event.total_num_of_people - event.num_of_people)
   render() {
-    const {host, name, location, time, spots, fig} = this.state.event;
+    const event = this.props.event;
     return (
       <div>
-        <div className='Event'>
+        {event? <div className='Event'>
           <div>
             <div className='Event-content grid-spacing'>
-              <span className='bold-text Event-text Event-spacing'>{name}</span>
-              <span className='Event-text'>{location}</span>
-              <span className='Event-text'>{time.toString()}</span>
-              <span className='Event-spacing'>{spots} spots left</span>
+              <span className='bold-text Event-text Event-spacing'>{event.name}</span>
+              <span className='Event-text'>Location: {event.location}</span>
+              <span className='Event-text'>{event.time.toString()}</span>
+              <span className='Event-spacing'>{this.getSpots(event)} spots left</span>
             </div>
             <div className='Event-fig-container'>
               {
-                typeof(fig) === 'object' ? fig.map(
-                  (g, idx) => <div className='Event-fig grid-spacing'><img
-                                key={idx}
+                typeof(event.fig) === 'object' ? event.fig.map(
+                  (g, idx) => <div className='Event-fig grid-spacing' key={idx}><img
                                 src={g}
                                 alt=''
                               /></div>
-                ) : <div><img className='Event-fig' src={fig} alt='' /></div>
+                ) : <div><img className='Event-fig' src={event.fig} alt='' /></div>
               }
             </div>
           </div>
@@ -47,12 +44,16 @@ class Event extends Component {
             <span className='bold-text'>Event Host</span>
           </div>
           <div className='grid-spacing'>
-            <EventHost host={host} />
-            <EventHost host={host} />
+            <EventHost host={event.host} />
           </div>
-        </div>
+        </div> : null
+        }
       </div>
     );
   }
 }
-export default Event;
+export default connect((store) => {
+  return {
+    event: store.events.events[0]
+  }
+})(Event);
