@@ -1,12 +1,19 @@
-export function fetchUser() {
-  return {
+import { USER } from '../const';
 
+export function registerUser(user) {
+  return {
+    type: USER.REGISTER_USER.action,
+    payload: {
+      user
+    }
   }
 }
 
-export function setUserName(name) {
+export function loginUser(user) {
   return {
-    type: 'SET_USER_NAME',
-    payload: name
+    type: USER.LOGIN_USER.action,
+    payload: {
+      user
+    }
   }
 }

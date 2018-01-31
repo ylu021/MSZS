@@ -30,3 +30,11 @@
     width: inherit;
     margin: 0 auto;
 }
+.Form-error {
+  display: flex;
+  flex-flow: column nowrap;
+  color: tomato;
+  font-weight: lighter;
+  align-items: center;
+  line-height: 1.5;
+}

@@ -3,7 +3,6 @@ const router = express.Router();
 const mongoose = require('mongoose');
 
 const User = require('../models/users');
-
 const Event = require('../models/events');
 
 const userController =  require('../controllers/user');

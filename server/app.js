@@ -3,7 +3,6 @@ const path = require('path');
 const favicon = require('serve-favicon');
 const logger = require('morgan');
 const bodyParser = require('body-parser');
-const bcrypt = require('bcrypt-nodejs');
 config = require('./config/main');
 const routes = require('./routes/index');
 
