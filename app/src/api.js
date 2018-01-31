@@ -14,5 +14,5 @@ async function getRequest(url, params) {
   return data;
 }
 
-export const fetchEvents = () => getRequest('/events');
-export const fetchEvent = (eventId) => getRequest('/events', eventId);
+export const fetchEvents = () => getRequest('/api/events');
+export const fetchEvent = (eventId) => getRequest('/api/events', eventId);

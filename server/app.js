@@ -3,7 +3,8 @@ const path = require('path');
 const favicon = require('serve-favicon');
 const logger = require('morgan');
 const bodyParser = require('body-parser');
-
+const bcrypt = require('bcrypt-nodejs');
+config = require('./config/main');
 const routes = require('./routes/index');
 
 const app = express();
@@ -13,7 +14,7 @@ const ObjectId = mongoose.Schema.Types.ObjectId;
 // using promise
 mongoose.Promise = require('bluebird');
 // connect database
-mongoose.connect('mongodb://localhost/meishizhaoshi', {
+mongoose.connect(config.database, {
   useMongoClient: true
 });
 const db = mongoose.connection;
@@ -93,7 +94,7 @@ dummyEvents.map((event) => {
 });
 
 // view engine setup
-app.set('port', process.env.PORT || 3001);
+app.set('port', config.port);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
