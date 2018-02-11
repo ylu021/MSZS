@@ -16,6 +16,9 @@ export const menuLink = {
   'about': {
     'path': '/about'
   },
+  'create': {
+    'path': '/about'
+  },
   'login': {
     'path': '/login'
   },

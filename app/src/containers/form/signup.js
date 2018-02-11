@@ -44,7 +44,7 @@ class SignupForm extends Component {
           nonEmptyPassword = this.nonEmpty(password),
           nonEmptyEmail = this.nonEmpty(email);
     const validEmail = this.validateRegex(emailRegex, email);
-    const validPassword = this.validateRegex(passwordRegex, password);
+    // const validPassword = this.validateRegex(passwordRegex, password);
     if(nonEmptyUsername && nonEmptyPassword && nonEmptyEmail
       && validEmail
       // && validPassword

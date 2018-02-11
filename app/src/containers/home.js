@@ -11,15 +11,27 @@ import EventCards from '../components/common/eventCard';
 import { centerText, sectionTitle } from '../components/const';
 import { menuLink } from '../components/const';
 import * as action from '../actions/eventAction';
+import {Auth} from '../routes';
 
 class Home extends Component {
   state = {
     modalOpen: false,
     modalType: '',
-    events: []
+    events: [],
+    loggedIn: !!localStorage.getItem('loggedIn')
   };
   componentDidMount() {
+    console.log(this.state, this.props)
     this.props.dispatch(action.fetchEvents());
+  }
+  updateLogined = (user) => {
+    console.log('in updateLogined')
+    Auth.authenticate(() => {
+      localStorage.setItem('loggedIn', true)
+      localStorage.setItem('username', user.email)
+      this.setState({ modalOpen: false, modalType: '', loggedIn: true});
+      this.props.history.push('/refresh/');
+    });
   }
   reRenderPath = (props) => {
     const { match } = props;
@@ -34,6 +46,7 @@ class Home extends Component {
     if(this.props !== nextProps) {
       this.reRenderPath(nextProps);
     }
+    // if(this.props.location.pathname='/')
   }
   onClose = () => {
     this.setState({ modalOpen: false, modalType: ''})
@@ -59,7 +72,7 @@ class Home extends Component {
         >
           {this.state.modalType === '/signup' ?
             <SignupForm />
-            : <LoginForm />
+            : <LoginForm updateLogined={this.updateLogined} />
           }
         </Modal>
       </div>
