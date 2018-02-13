@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt-nodejs');
 const Schema = mongoose.Schema;
+const config = require('../config/main');
 
 const userSchema = new Schema({
   name: String,
@@ -21,7 +22,10 @@ const userSchema = new Schema({
   },
   resetPasswordToken: { type: String },
   resetPasswordExpires: { type: Date },
-  profile_fig: String
+  profile_fig: {
+    type: String,
+    default: config.consts.profile_fig
+  }
 }, {
   timestamps: true
 });

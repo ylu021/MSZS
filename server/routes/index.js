@@ -12,9 +12,8 @@ const passportService = require('../config/passport');
 const passport = require('passport');
 
 // Middleware to require login/auth
-const requireAuth = passport.authenticate('jwt', { session: false });
-const requireLogin = passport.authenticate('local', { session: false });
-
+// const requireAuth = passport.authenticate('jwt', { session: false });
+// const requireLogin = passport.authenticate('local', { session: false });
 // Constants for role types
 const REQUIRE_ADMIN = "Admin",
       REQUIRE_OWNER = "Owner",
@@ -41,6 +40,6 @@ module.exports = (app) => {
 	apiRoutes.get('/events/:id', eventController.list);
 	apiRoutes.use('/auth', authRoutes);
 	authRoutes.post('/register', authenticationController.register);
-	authRoutes.post('/login', requireLogin, authenticationController.login);
+	authRoutes.post('/login', authenticationController.login);
 	app.use('/api', apiRoutes);
 };
