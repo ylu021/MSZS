@@ -3,6 +3,7 @@ import logo from 'logo.svg';
 import './banner.css';
 import {Link} from 'react-router-dom';
 import {menuLink} from './const';
+import {Auth} from '../routes';
 
 const LogoFraction = () => (
   <div className='banner-site'>
@@ -19,15 +20,16 @@ let menu1 = ['home', 'explore', 'about'];
 const menu1_login = ['home', 'explore', 'about', 'create'];
 let menu2 = ['login', 'join us'];
 const menu2_login = ['login'];
-const UserMenu = ({user}) => (
-  <div>
-    User *|_A|*
+const UserMenu = (props) => (
+  <div className='row'>
+    <span>User {props.user}</span>
+    <button onClick={props.handleLogout}>Logout</button>
   </div>
 )
 
 const capitalizeText = (text) => text[0].toUpperCase() + text.substring(1)
 
-const Menu = ({logined, user}) => {
+const Menu = ({logined, user, handleLogout}) => {
   if(logined) {
     menu1 = menu1_login;
     menu2 = menu2_login;
@@ -49,7 +51,7 @@ const Menu = ({logined, user}) => {
       {menu2.map((menu) => {
         let classes = [];
         if(menu === 'login' && logined) {
-          return <li key={menu}><UserMenu user={user}/></li>
+          return <li key={menu}><UserMenu user={user} handleLogout={handleLogout}/></li>
         }else {
           if (menu === 'join us') {
             classes.push('banner-menu-signup');
@@ -64,11 +66,28 @@ const Menu = ({logined, user}) => {
 };
 
 class Banner extends Component {
+  state = {
+    logined: false
+  }
+  componentDidMount() {
+    Auth.authenticate((logined) => {
+      this.setState({logined});
+    })
+  }
+  handleLogout = () => {
+    Auth.signout((success) => {
+      if(success) {
+        window.location.reload();
+      }
+    })
+  }
   render() {
+    const user = JSON.parse(localStorage.getItem('user', '{}'));
+    const username = user? user.name: null;
     return (
       <header className='banner'>
         <LogoFraction/>
-        <Menu logined={localStorage.getItem('loggedIn')} user={null} />
+        <Menu logined={this.state.logined} user={username} handleLogout={this.handleLogout} />
     	</header>
     )
   }
