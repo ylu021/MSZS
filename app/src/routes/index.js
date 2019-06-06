@@ -13,15 +13,18 @@ import Banner from '../containers/banner';
 import { Explore, About } from '../components/site';
 
 export const Auth = {
-  isAuthenticated: false,
   authenticate(cb) {
-    this.isAuthenticated = true;
-    setTimeout(cb, 100); // fake async
+    // TODO: change to check cookie
+    // for now check localStorage user
+    if(localStorage.getItem('user')) {
+      return cb(true);
+    }
+    return cb(false);
   },
   signout(cb) {
-    this.isAuthenticated = false;
     localStorage.clear();
-    setTimeout(cb, 100);
+    // clear cookie 
+    return cb(true);
   }
 };
 
