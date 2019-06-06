@@ -29,8 +29,9 @@ exports.login = function(req, res, next) {
     if (err) { return next(err); }
       if (!user) { return res.status(401).json( { message: info.message }); }
       let userInfo = setUserInfo(user);
+      let token = 'JWT ' + generateToken(userInfo);
+      res.cookie('Authentication', token, { HttpOnly: true});
       res.status(200).json({
-        token: 'JWT ' + generateToken(userInfo),
         user: userInfo
       });
   })(req, res, next);

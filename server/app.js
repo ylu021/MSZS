@@ -7,6 +7,7 @@ const config = require('./config/main');
 const routes = require('./routes/index');
 
 const app = express();
+const cookieParser = require('cookie-parser');
 const mongodb = require('mongodb');
 const mongoose = require('mongoose');
 const ObjectId = mongoose.Schema.Types.ObjectId;
@@ -103,6 +104,7 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(cookieParser());
 
 routes(app);
 app.listen(app.get('port'), function() {
