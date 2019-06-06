@@ -18,20 +18,16 @@ class Home extends Component {
     modalOpen: false,
     modalType: '',
     events: [],
-    loggedIn: !!localStorage.getItem('loggedIn')
+    loggedIn: !!localStorage.getItem('user')
   };
   componentDidMount() {
     console.log(this.state, this.props)
     this.props.dispatch(action.fetchEvents());
   }
   updateLogined = (user) => {
-    console.log('in updateLogined')
-    Auth.authenticate(() => {
-      localStorage.setItem('loggedIn', true)
-      localStorage.setItem('username', user.email)
-      this.setState({ modalOpen: false, modalType: '', loggedIn: true});
-      this.props.history.push('/refresh/');
-    });
+    localStorage.setItem('user', JSON.stringify(user.user));
+    this.setState({ modalOpen: false, modalType: '', loggedIn: true});
+    window.location.reload();
   }
   reRenderPath = (props) => {
     const { match } = props;
@@ -46,7 +42,6 @@ class Home extends Component {
     if(this.props !== nextProps) {
       this.reRenderPath(nextProps);
     }
-    // if(this.props.location.pathname='/')
   }
   onClose = () => {
     this.setState({ modalOpen: false, modalType: ''})
