@@ -42,3 +42,5 @@ PUT
 DELETE
 /events/:id - delete
 
+cookie https://arjunphp.com/handle-cookies-express-js/
+
