@@ -14,9 +14,9 @@ class LoginForm extends Component {
     loggedIn: localStorage.getItem('loggedIn')
   };
   componentWillReceiveProps(nextProps) {
-    if(this.props.user !== nextProps.user) {
-      this.validateLogin(nextProps)
-    }
+     if(this.props !== nextProps) {
+       this.validateLogin(nextProps);
+     }
   };
   validateLogin = (nextProps) => {
     if('error' in nextProps.user) {
