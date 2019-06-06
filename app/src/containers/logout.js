@@ -3,8 +3,10 @@ import {Auth} from '../routes';
 
 class Logout extends Component {
   componentDidMount() {
-    Auth.signout(() => {
-      this.props.history.push('/refresh/');
+    Auth.signout((res) => {
+      if(res) {
+        window.location.reload();
+      }
     })
   }
   render() {
