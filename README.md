@@ -1,3 +1,5 @@
+# Note: An obsolete project that was designed to test an idea
+
 npm i -g express-generator
 express server // creating a server
 cd server && npm i // install dep
